@@ -63,6 +63,10 @@ public class BWorld extends World<Actor>
             mover.up();
         else if (description.equals("D"))
             mover.right();
+        else if(description.equals("A"))
+            mover.left();
+        else if(description.equals("S"))
+            mover.down();
    
         return true;
     }
