@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Mover()
+comment1.params=
+comment1.target=void\ up()
+comment1.text=\r\n\ up\ and\ right\ are\ copies\ of\ the\ move\ method\ from\ Bug\ with\ the\ direction\ changed\r\n
+comment2.params=
+comment2.target=void\ right()
+numComments=3
