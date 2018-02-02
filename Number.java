@@ -3,7 +3,7 @@ import info.gridworld.grid.*;
 
 import java.awt.Color;
 
-public class Number extends Actor
+public class Number extends Mover
 {
     public void act() {
         

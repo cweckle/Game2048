@@ -3,7 +3,7 @@ import info.gridworld.actor.*;
 import java.awt.Color;
 
 // a Mover is an Actor that can move up and to the right
-public class Mover extends Number
+public class Mover extends Actor
 {
 
     public Mover()
@@ -25,8 +25,6 @@ public class Mover extends Number
             moveTo(next);
         else
             removeSelfFromGrid();
-        Flower flower = new Flower(getColor());
-        flower.putSelfInGrid(gr, loc);
     }
     
     public void right()
@@ -40,7 +38,30 @@ public class Mover extends Number
             moveTo(next);
         else
             removeSelfFromGrid();
-        Flower flower = new Flower(getColor());
-        flower.putSelfInGrid(gr, loc);
+    }
+    public void down()
+    {
+        Grid<Actor> gr = getGrid();
+        if (gr == null)
+            return;
+        Location loc = getLocation();
+        Location next = loc.getAdjacentLocation(Location.SOUTH);    // changed this line
+        if (gr.isValid(next))
+            moveTo(next);
+        else
+            removeSelfFromGrid();
+    }
+    
+    public void left()
+    {
+        Grid<Actor> gr = getGrid();
+        if (gr == null)
+            return;
+        Location loc = getLocation();
+        Location next = loc.getAdjacentLocation(Location.WEST);        // and this one
+        if (gr.isValid(next))
+            moveTo(next);
+        else
+            removeSelfFromGrid();
     }
 }
