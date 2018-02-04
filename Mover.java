@@ -39,6 +39,7 @@ public class Mover extends Actor
         else
             removeSelfFromGrid();
     }
+    
     public void down()
     {
         Grid<Actor> gr = getGrid();
