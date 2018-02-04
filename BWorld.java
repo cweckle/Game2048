@@ -5,11 +5,11 @@ import info.gridworld.world.*;
 import java.util.ArrayList;
 
 // BWorld overrides step so it doesn't do anything,  
-// processes W and D keys to move its mover up and right,
-// and processes mouse click to move mover to spot clicked
+// processes W, D, A, and S keys to move up, right, down, and left, respectively.
 public class BWorld extends World<Actor>
 {       
-    private Mover mover;                            // a copy of mover is here so I can manipulate it           
+    private Mover mover;
+    private int direction;
  
     public BWorld(Mover mover)
     {
@@ -28,20 +28,9 @@ public class BWorld extends World<Actor>
     public void step()                              // deactivates step
     {
     }
-
-    /**
-     * This method is called when the user clicks on a location in the
-     * WorldFrame.
-     * 
-     * @param loc the grid location that the user selected
-     * @return true if the world consumes the click, or false if the GUI should
-     * invoke the Location->Edit menu action
-     */
-    // implemented to move mover to location
-    public boolean locationClicked(Location loc)
-    {
-        mover.moveTo(loc);
-        return true;
+    
+    public int getDirection() {
+        return direction;
     }
     
     /**
@@ -57,16 +46,14 @@ public class BWorld extends World<Actor>
     // implemented to move up and right with the W and D keys
     public boolean keyPressed(String description, Location loc)
     {
-        System.out.println(description); 
-  
         if (description.equals("W"))
-            mover.up();
+            direction = Location.NORTH;
         else if (description.equals("D"))
-            mover.right();
+            direction = Location.EAST;
         else if(description.equals("A"))
-            mover.left();
+            direction = Location.WEST;
         else if(description.equals("S"))
-            mover.down();
+            direction = Location.SOUTH;
    
         return true;
     }

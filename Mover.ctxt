@@ -1,13 +1,14 @@
 #BlueJ class context
-comment0.params=
-comment0.target=Mover()
+comment0.target=Mover
 comment1.params=
-comment1.target=void\ up()
-comment1.text=\r\n\ up\ and\ right\ are\ copies\ of\ the\ move\ method\ from\ Bug\ with\ the\ direction\ changed\r\n
+comment1.target=Mover()
 comment2.params=
-comment2.target=void\ right()
+comment2.target=void\ up()
+comment2.text=\r\n\ up\ and\ right\ are\ copies\ of\ the\ move\ method\ from\ Bug\ with\ the\ direction\ changed\r\n
 comment3.params=
-comment3.target=void\ down()
+comment3.target=void\ right()
 comment4.params=
-comment4.target=void\ left()
-numComments=5
+comment4.target=void\ down()
+comment5.params=
+comment5.target=void\ left()
+numComments=6

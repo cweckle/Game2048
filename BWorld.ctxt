@@ -1,24 +1,24 @@
 #BlueJ class context
-comment0.params=mover
-comment0.target=BWorld(Mover)
-comment1.params=grid
-comment1.target=BWorld(info.gridworld.grid.Grid)
-comment1.text=\r\n\ Constructs\ an\ actor\ world\ with\ a\ given\ grid.\r\n\ @param\ grid\ the\ grid\ for\ this\ world.\r\n
-comment2.params=
-comment2.target=void\ step()
-comment3.params=loc
-comment3.target=boolean\ locationClicked(info.gridworld.grid.Location)
-comment3.text=\r\n\ This\ method\ is\ called\ when\ the\ user\ clicks\ on\ a\ location\ in\ the\r\n\ WorldFrame.\r\n\ \r\n\ @param\ loc\ the\ grid\ location\ that\ the\ user\ selected\r\n\ @return\ true\ if\ the\ world\ consumes\ the\ click,\ or\ false\ if\ the\ GUI\ should\r\n\ invoke\ the\ Location->Edit\ menu\ action\r\n
-comment4.params=description\ loc
-comment4.target=boolean\ keyPressed(java.lang.String,\ info.gridworld.grid.Location)
-comment4.text=\r\n\ This\ method\ is\ called\ when\ a\ key\ was\ pressed.\ Override\ it\ if\ your\ world\ wants\r\n\ to\ consume\ some\ keys\ (e.g.\ "1"-"9"\ for\ Sudoku).\ Don't\ consume\ plain\ arrow\ keys,\r\n\ or\ the\ user\ loses\ the\ ability\ to\ move\ the\ selection\ square\ with\ the\ keyboard.\ \ \ \r\n\ @param\ description\ the\ string\ describing\ the\ key,\ in\ \r\n\ <a\ href\="http\://java.sun.com/javase/6/docs/api/javax/swing/KeyStroke.html\#getKeyStroke(java.lang.String)">this\ format</a>.\ \r\n\ @param\ loc\ the\ selected\ location\ in\ the\ grid\ at\ the\ time\ the\ key\ was\ pressed\r\n\ @return\ true\ if\ the\ world\ consumes\ the\ key\ press,\ false\ if\ the\ GUI\ should\r\n\ consume\ it.\r\n
-comment5.params=loc\ occupant
-comment5.target=void\ add(info.gridworld.grid.Location,\ info.gridworld.actor.Actor)
-comment5.text=\r\n\ Adds\ an\ actor\ to\ this\ world\ at\ a\ given\ location.\r\n\ @param\ loc\ the\ location\ at\ which\ to\ add\ the\ actor\r\n\ @param\ occupant\ the\ actor\ to\ add\r\n
-comment6.params=occupant
-comment6.target=void\ add(info.gridworld.actor.Actor)
-comment6.text=\r\n\ Adds\ an\ occupant\ at\ a\ random\ empty\ location.\r\n\ @param\ occupant\ the\ occupant\ to\ add\r\n
-comment7.params=loc
-comment7.target=info.gridworld.actor.Actor\ remove(info.gridworld.grid.Location)
-comment7.text=\r\n\ Removes\ an\ actor\ from\ this\ world.\r\n\ @param\ loc\ the\ location\ from\ which\ to\ remove\ an\ actor\r\n\ @return\ the\ removed\ actor,\ or\ null\ if\ there\ was\ no\ actor\ at\ the\ given\r\n\ location.\r\n
-numComments=8
+comment0.target=BWorld
+comment1.params=mover
+comment1.target=BWorld(Mover)
+comment2.params=grid
+comment2.target=BWorld(info.gridworld.grid.Grid)
+comment2.text=\r\n\ Constructs\ an\ actor\ world\ with\ a\ given\ grid.\r\n\ @param\ grid\ the\ grid\ for\ this\ world.\r\n
+comment3.params=
+comment3.target=void\ step()
+comment4.params=
+comment4.target=int\ getDirection()
+comment5.params=description\ loc
+comment5.target=boolean\ keyPressed(java.lang.String,\ info.gridworld.grid.Location)
+comment5.text=\r\n\ This\ method\ is\ called\ when\ a\ key\ was\ pressed.\ Override\ it\ if\ your\ world\ wants\r\n\ to\ consume\ some\ keys\ (e.g.\ "1"-"9"\ for\ Sudoku).\ Don't\ consume\ plain\ arrow\ keys,\r\n\ or\ the\ user\ loses\ the\ ability\ to\ move\ the\ selection\ square\ with\ the\ keyboard.\ \ \ \r\n\ @param\ description\ the\ string\ describing\ the\ key,\ in\ \r\n\ <a\ href\="http\://java.sun.com/javase/6/docs/api/javax/swing/KeyStroke.html\#getKeyStroke(java.lang.String)">this\ format</a>.\ \r\n\ @param\ loc\ the\ selected\ location\ in\ the\ grid\ at\ the\ time\ the\ key\ was\ pressed\r\n\ @return\ true\ if\ the\ world\ consumes\ the\ key\ press,\ false\ if\ the\ GUI\ should\r\n\ consume\ it.\r\n
+comment6.params=loc\ occupant
+comment6.target=void\ add(info.gridworld.grid.Location,\ info.gridworld.actor.Actor)
+comment6.text=\r\n\ Adds\ an\ actor\ to\ this\ world\ at\ a\ given\ location.\r\n\ @param\ loc\ the\ location\ at\ which\ to\ add\ the\ actor\r\n\ @param\ occupant\ the\ actor\ to\ add\r\n
+comment7.params=occupant
+comment7.target=void\ add(info.gridworld.actor.Actor)
+comment7.text=\r\n\ Adds\ an\ occupant\ at\ a\ random\ empty\ location.\r\n\ @param\ occupant\ the\ occupant\ to\ add\r\n
+comment8.params=loc
+comment8.target=info.gridworld.actor.Actor\ remove(info.gridworld.grid.Location)
+comment8.text=\r\n\ Removes\ an\ actor\ from\ this\ world.\r\n\ @param\ loc\ the\ location\ from\ which\ to\ remove\ an\ actor\r\n\ @return\ the\ removed\ actor,\ or\ null\ if\ there\ was\ no\ actor\ at\ the\ given\r\n\ location.\r\n
+numComments=9
