@@ -10,10 +10,35 @@ public class BWorld extends World<Actor>
 {       
     private Mover mover;
     private int direction;
+    private Number[] allNums;
  
-    public BWorld(Mover mover)
+    public BWorld()
     {
-        this.mover = mover;
+        
+        allNums = new Number[11];
+        allNums[0] = new Two();
+        allNums[1] = new Four();
+        allNums[2] = new Eight();
+        allNums[3] = new Sixteen();
+        allNums[4] = new ThirtyTwo();
+        allNums[5] = new SixtyFour();
+        allNums[6] = new OneTwentyEight();
+        allNums[7] = new TwoFiftySix();
+        allNums[8] = new FiveTwelve();
+        allNums[9] = new TenTwentyFour();
+        allNums[10] = new TwentyFourtyEight();
+    }
+    
+    public Number getNum(int i) {
+        return allNums[i];
+    }
+    
+    public int getIndex(Number other) {
+        for(int i = 0; i < allNums.length; i++) {
+            if(other.equals(allNums[i]))
+                return i;
+        }
+        return -1;
     }
 
     /**
@@ -27,6 +52,7 @@ public class BWorld extends World<Actor>
 
     public void step()                              // deactivates step
     {
+        
     }
     
     public int getDirection() {
@@ -54,7 +80,8 @@ public class BWorld extends World<Actor>
             direction = Location.WEST;
         else if(description.equals("S"))
             direction = Location.SOUTH;
-   
+        Number num = new Number();
+        num.act();
         return true;
     }
     

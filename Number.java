@@ -5,50 +5,60 @@ import java.awt.Color;
 
 public class Number extends Mover
 {
-    private Number[] allNums;
-    private ArrayList<Number> numsOnGrid;
-    
     public Number() {
-        allNums = new Number[11];
-        allNums[0] = new Two();
-        allNums[1] = new Four();
-        allNums[2] = new Eight();
-        allNums[3] = new Sixteen();
-        allNums[4] = new ThirtyTwo();
-        allNums[5] = new SixtyFour();
-        allNums[6] = new OneTwentyEight();
-        allNums[7] = new TwoFiftySix();
-        allNums[8] = new FiveTwelve();
-        allNums[9] = new OneTwentyFour();
-        allNums[10] = new TwentyFourtyEight();
-        
-        numsOnGrid.add(new Two());
-        numsOnGrid.add(new Two());
+
     }
-    
+
     public void act() {
-        for(int i = 0; i < numsOnGrid.size(); i++) {
-            /* Get the direction that the user chooses. */
-            Number num = numsOnGrid.get(i);
-            BWorld temp = new BWorld(num);
-            int direction = temp.getDirection();
-            
-            /* Check what is in the spot in that direction. */
-            Location nextSpot = num.getLocation().getAdjacentLocation(direction);
-            Actor nextActor = getGrid().get(nextSpot);
-            
-            if(nextActor instanceof /* specific class -- how to do this? -- */) {
-                // merge by having the one in the direction stay and the other one disappear
+        BWorld temp = new BWorld();
+        int direction = temp.getDirection();
+        for(int i = 0; i < 4; i++){
+            ArrayList<Number> numbers = new ArrayList<Number>();
+            numbers = findActorsInRow(direction, i);
+
+            if(direction == 0 || direction == 270) {
+                numbers = combineNumber(numbers, temp);
             }
-            else if (nextActor == null) {
-                while(nextSpot != null) {
-                    moveTo(nextSpot);
-                    // need to find a way to make sure that when it hits the side of the Grid, it also stops.
+            else {
+                ArrayList<Number> tempNum = new ArrayList<Number>();
+                int count = 0;
+                for(int j = numbers.size() - 1; j >= 0; j--) {
+                    tempNum.set(count, numbers.get(j));
+                    count++;
                 }
+                tempNum = combineNumber(tempNum, temp);
             }
-            
         }
     }
-    
-    
+
+    public ArrayList<Number> combineNumber(ArrayList<Number> other, BWorld temp) {
+        for(int i = 0; i < other.size(); i++) {
+            if(other.get(i).equals(other.get(i + 1))) {
+                int index = temp.getIndex(other.get(i));
+                Number newNum = temp.getNum(index + 1);
+                other.set(i, newNum);
+                other.remove(i + 1);
+            }
+        }
+        return other;
+    }
+
+    public ArrayList<Number> findActorsInRow(int direction, int line) {
+        ArrayList<Number> numbers = new ArrayList<Number>();
+        if(direction == 0 || direction == 180){
+            for(int i = 0; i < 4; i ++){
+                Location check = new Location(line, i);
+                if(getGrid().get(check) != null)
+                    numbers.add((Number)getGrid().get(check));
+            }
+        }
+        else{
+            for(int i = 0; i < line; i ++){
+                Location check = new Location(i, line);
+                if(getGrid().get(check) != null)
+                    numbers.add((Number)getGrid().get(check));
+            }
+        }
+        return numbers;
+    }
 }
