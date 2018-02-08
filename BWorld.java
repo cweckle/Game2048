@@ -10,10 +10,85 @@ public class BWorld extends World<Actor>
 {       
     private Mover mover;
     private int direction;
+    private Number[] allNums;
+    private Grid grid;
  
-    public BWorld(Mover mover)
+    public BWorld()
     {
-        this.mover = mover;
+        allNums = new Number[11];
+        allNums[0] = new Two();
+        allNums[1] = new Four();
+        allNums[2] = new Eight();
+        allNums[3] = new Sixteen();
+        allNums[4] = new ThirtyTwo();
+        allNums[5] = new SixtyFour();
+        allNums[6] = new OneTwentyEight();
+        allNums[7] = new TwoFiftySix();
+        allNums[8] = new FiveTwelve();
+        allNums[9] = new TenTwentyFour();
+        allNums[10] = new TwentyFourtyEight();
+    }
+    
+    // precondition: none.
+    // postcondition: retrieves a number from the master Array (allNums) and returns it.
+    public Number getNum(int i) {
+        return allNums[i];
+    }
+    
+    // precondition: none.
+    // postcondition: returns the current Grid.
+    public Grid thisGrid() {
+        return getGrid();
+    }
+    
+    // precondition: none.
+    // postcondition: gets the direction of the player's keyPress.
+    public int getDirection() {
+        return direction;
+    }
+    
+    // precondition: none.
+    // postcondition: returns the index of a Number in the master Array of numbers (allNums). */
+    public int getIndex(Number other) {
+        for(int i = 0; i < allNums.length; i++) {
+            if(other.equals(allNums[i]))
+                return i;
+        }
+        return -1;
+    }
+    
+    // precondition: none.
+    // postcondition: puts back a row or column onto the Grid.
+    public void putBackInGrid(ArrayList<Number> numbers, int lineNum, int direction) {
+        for(int i = 0; i < 4; i++)
+            putBackBlock(lineNum, i, numbers, direction);
+        
+        /* Right/down lines get put back in reverse order. */
+        for(int i = 3; i >= 0; i--)
+            putBackBlock(lineNum, i, numbers, direction);
+    }
+    
+    // precondition: none.
+    // postcondition: puts back an individual block onto the Grid.
+    public void putBackBlock(int lineNum, int i, ArrayList<Number> numbers, int direction) {
+        /* If the ArrayList is a row, then the changing element (i) is the x coordinate.
+         * If the ArrayList is a column, the changing element(i) is set to the y coordinate. */
+        int x = i; 
+        int y = lineNum;
+        if(direction == 0 || direction == 180) {
+            x = lineNum;
+            y = i;
+        }
+        
+        /* Identify the spot on the grid. If that spot is occupied, remove it and replace it with the new Number from the Arraylist. */
+        Location loc = new Location(x, y);
+        Actor spot = getGrid().get(loc);
+        if(spot != null)
+            spot.removeSelfFromGrid();
+        Actor replacement = numbers.get(i);
+        if(numbers.get(i) != null) {
+            replacement.putSelfInGrid(getGrid(), loc);
+        }    
     }
 
     /**
@@ -27,10 +102,7 @@ public class BWorld extends World<Actor>
 
     public void step()                              // deactivates step
     {
-    }
-    
-    public int getDirection() {
-        return direction;
+        
     }
     
     /**
@@ -43,18 +115,21 @@ public class BWorld extends World<Actor>
      * @return true if the world consumes the key press, false if the GUI should
      * consume it.
      */
-    // implemented to move up and right with the W and D keys
+    // sets the direction and catalyzes act() and the analysis of the current Grid.
     public boolean keyPressed(String description, Location loc)
     {
-        if (description.equals("W"))
+        if (description.equals("W")) {
             direction = Location.NORTH;
+            System.out.println("DEBUG");
+        }
         else if (description.equals("D"))
             direction = Location.EAST;
         else if(description.equals("A"))
             direction = Location.WEST;
         else if(description.equals("S"))
             direction = Location.SOUTH;
-   
+        Number num = new Number();
+        num.act();
         return true;
     }
     

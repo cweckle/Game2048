@@ -1,7 +1,13 @@
 #BlueJ class context
 comment0.target=Number
 comment1.params=
-comment1.target=Number()
-comment2.params=
-comment2.target=void\ act()
-numComments=3
+comment1.target=void\ act()
+comment2.params=numbers
+comment2.target=java.util.ArrayList\ reverseList(java.util.ArrayList)
+comment3.params=other\ temp
+comment3.target=java.util.ArrayList\ combineNumber(java.util.ArrayList,\ BWorld)
+comment4.params=direction\ line
+comment4.target=java.util.ArrayList\ findActorsInRow(int,\ int)
+comment5.params=numbers\ current\ line\ direction\ i
+comment5.target=java.util.ArrayList\ addNumbers(java.util.ArrayList,\ info.gridworld.grid.Grid,\ int,\ int,\ int)
+numComments=6
