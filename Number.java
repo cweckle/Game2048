@@ -1,64 +1,30 @@
+/**
+ * Changes made to code:
+ *      - Resolved the nullPointerException for the getGrid() issue.
+ *           - Created a thisGrid() method in BWorld that returns the current Grid. 
+ *           - Set a Grid object grid to this, and used grid instead of getGrid();
+ *      - @elysia simplified your code into one shorter method.
+ *      - attempted to write the code to paste the processed row/column back onto the Grid.
+ * 
+ * Issues3
+ *      - Null Pointer Exception came back after coding some more.
+ *          - specifically, this issue happens at paste().
+ * 
+ * Other Stuff
+ *      - Remove Mover() if we don't end up using it.
+ *      - Do we want it to slide across the board (graphically)? In that case, we would use Mover.
+ *      - Add a constructor to Number()?
+ *      - SHOULD WE EVEN BE USING ACT() IF WE DISABLED STEP?
+ *          - Maybe we should call it playGame() or swipe() or something.
+ * 
+ */
+
 import info.gridworld.actor.*;
 import info.gridworld.grid.*;
 import java.util.ArrayList;
 import java.awt.Color;
 
-public class Number extends Mover
+public class Number extends Actor
 {
-    public Number() {
-
-    }
-
-    public void act() {
-        BWorld temp = new BWorld();
-        int direction = temp.getDirection();
-        for(int i = 0; i < 4; i++){
-            ArrayList<Number> numbers = new ArrayList<Number>();
-            numbers = findActorsInRow(direction, i);
-
-            if(direction == 0 || direction == 270) {
-                numbers = combineNumber(numbers, temp);
-            }
-            else {
-                ArrayList<Number> tempNum = new ArrayList<Number>();
-                int count = 0;
-                for(int j = numbers.size() - 1; j >= 0; j--) {
-                    tempNum.set(count, numbers.get(j));
-                    count++;
-                }
-                tempNum = combineNumber(tempNum, temp);
-            }
-        }
-    }
-
-    public ArrayList<Number> combineNumber(ArrayList<Number> other, BWorld temp) {
-        for(int i = 0; i < other.size(); i++) {
-            if(other.get(i).equals(other.get(i + 1))) {
-                int index = temp.getIndex(other.get(i));
-                Number newNum = temp.getNum(index + 1);
-                other.set(i, newNum);
-                other.remove(i + 1);
-            }
-        }
-        return other;
-    }
-
-    public ArrayList<Number> findActorsInRow(int direction, int line) {
-        ArrayList<Number> numbers = new ArrayList<Number>();
-        if(direction == 0 || direction == 180){
-            for(int i = 0; i < 4; i ++){
-                Location check = new Location(line, i);
-                if(getGrid().get(check) != null)
-                    numbers.add((Number)getGrid().get(check));
-            }
-        }
-        else{
-            for(int i = 0; i < line; i ++){
-                Location check = new Location(i, line);
-                if(getGrid().get(check) != null)
-                    numbers.add((Number)getGrid().get(check));
-            }
-        }
-        return numbers;
-    }
+    
 }

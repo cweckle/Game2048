@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Board()
+comment1.params=i
+comment1.target=Number\ getNum(int)
+comment2.params=other
+comment2.target=int\ getIndex(Number)
+comment3.params=direction
+comment3.target=void\ act(int)
+comment4.params=numbers\ lineNum\ direction
+comment4.target=void\ putBackInGrid(java.util.ArrayList,\ int,\ int)
+comment5.params=lineNum\ i\ numbers\ direction
+comment5.target=void\ putBackBlock(int,\ int,\ java.util.ArrayList,\ int)
+comment6.params=numbers
+comment6.target=java.util.ArrayList\ reverseList(java.util.ArrayList)
+comment7.params=other
+comment7.target=java.util.ArrayList\ combineNumber(java.util.ArrayList)
+comment8.params=direction\ line
+comment8.target=java.util.ArrayList\ findActorsInRow(int,\ int)
+comment9.params=numbers\ line\ direction\ i
+comment9.target=java.util.ArrayList\ addNumbers(java.util.ArrayList,\ int,\ int,\ int)
+numComments=10

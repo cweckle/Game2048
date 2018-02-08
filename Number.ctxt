@@ -1,10 +1,2 @@
 #BlueJ class context
-comment0.params=
-comment0.target=Number()
-comment1.params=
-comment1.target=void\ act()
-comment2.params=other\ temp
-comment2.target=java.util.ArrayList\ combineNumber(java.util.ArrayList,\ BWorld)
-comment3.params=direction\ line
-comment3.target=java.util.ArrayList\ findActorsInRow(int,\ int)
-numComments=4
+numComments=0

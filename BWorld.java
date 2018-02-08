@@ -8,37 +8,17 @@ import java.util.ArrayList;
 // processes W, D, A, and S keys to move up, right, down, and left, respectively.
 public class BWorld extends World<Actor>
 {       
-    private Mover mover;
     private int direction;
-    private Number[] allNums;
  
     public BWorld()
     {
         
-        allNums = new Number[11];
-        allNums[0] = new Two();
-        allNums[1] = new Four();
-        allNums[2] = new Eight();
-        allNums[3] = new Sixteen();
-        allNums[4] = new ThirtyTwo();
-        allNums[5] = new SixtyFour();
-        allNums[6] = new OneTwentyEight();
-        allNums[7] = new TwoFiftySix();
-        allNums[8] = new FiveTwelve();
-        allNums[9] = new TenTwentyFour();
-        allNums[10] = new TwentyFourtyEight();
     }
     
-    public Number getNum(int i) {
-        return allNums[i];
-    }
-    
-    public int getIndex(Number other) {
-        for(int i = 0; i < allNums.length; i++) {
-            if(other.equals(allNums[i]))
-                return i;
-        }
-        return -1;
+    // precondition: none.
+    // postcondition: gets the direction of the player's keyPress.
+    public int getDirection() {
+        return direction;
     }
 
     /**
@@ -55,10 +35,6 @@ public class BWorld extends World<Actor>
         
     }
     
-    public int getDirection() {
-        return direction;
-    }
-    
     /**
      * This method is called when a key was pressed. Override it if your world wants
      * to consume some keys (e.g. "1"-"9" for Sudoku). Don't consume plain arrow keys,
@@ -69,19 +45,27 @@ public class BWorld extends World<Actor>
      * @return true if the world consumes the key press, false if the GUI should
      * consume it.
      */
-    // implemented to move up and right with the W and D keys
+    // sets the direction and catalyzes act() and the analysis of the current Grid.
     public boolean keyPressed(String description, Location loc)
     {
-        if (description.equals("W"))
+        Board board = new Board();
+        if (description.equals("W")) {
             direction = Location.NORTH;
-        else if (description.equals("D"))
+            System.out.println("W");
+        }
+        else if (description.equals("D")) {
             direction = Location.EAST;
-        else if(description.equals("A"))
+            System.out.println("D");
+        }
+        else if(description.equals("A")) {
             direction = Location.WEST;
-        else if(description.equals("S"))
+            System.out.println("A");
+        }
+        else if(description.equals("S")) {
             direction = Location.SOUTH;
-        Number num = new Number();
-        num.act();
+            System.out.println("S");
+        }
+        board.act(direction);
         return true;
     }
     
