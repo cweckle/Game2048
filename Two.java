@@ -7,6 +7,5 @@ public class Two extends Number{
     public Two(){
         super();
         setColor(null);
-        
     }
 }

@@ -30,6 +30,7 @@ public class BWorld extends World<Actor>
         super(grid);
     }
 
+
     public void step()                              // deactivates step
     {
         
